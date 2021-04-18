@@ -1,0 +1,14 @@
+{
+	"msgtype":    "",
+	"timestamp":   "",
+					"icaohexcode":  "",
+					"callsign":     "",
+					"altitude":     "",
+					"latitude":     "",
+					"longitude":    "",
+					"onGround":     "",
+					"groundSpeed":  "",
+					"track":        "",
+					"verticalRate": "",
+					"squak":        ""
+}
