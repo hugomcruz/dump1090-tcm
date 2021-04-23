@@ -1,26 +1,17 @@
 {
-  "Protocol":"pulsar"
 
   "Dump1090Server":"10.0.0.1",
   "Dump1090Port": 30003,
   "BatchTimeWindow": 3,
   "LogLevel":"INFO",
 
-"PulsarAuthenticationKey:"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJnc2JjIjoiMDFDOVNESlZHV1AyN0dKSEg1UVBTN1k2ODEiLCJpYXQiOjE2MTUwODk0MzIsInN1YiI6IjhmMjY4NzI4OGNhMjQ5YzA5ZjYxNzQzODRmZGJhZmExIn0.NuvH8xLMZRcSy4DPLJxzgRWvtbAaOQUOgWrWoXfkHwlTgZsw7-yV7HVqwvVcBeZDLaQVfc5DQ9BMH-hdc3N2DNXpXrKDi0iBqmLaOeEab7_MlhjQVyDtasex4VWU-BNAmXZb2ORKqTal3-lU8uWJLCW_N4zfG8cvaWyw5jxLJKNKfI4EEREdafXz_KR1hcvHLhC0ts7bQBZZQOU0ykNBIgzNuo9htDMfaAWBR7EfZWbM_ceHLWJybMNNNgf8Swne5ZakvmXNRXUkvEHf3wsK1ud8FDs9Hd6si5gbVQ_GXkrD0oRpdk9zs7eRPdpY0O4MShFAM-qlYodU57sfPJW7aA",
+  "RadarID":"xxxxxxxx",
+  "RadarKey":"xxxxxxxx",
 
-"PulsarURL": "pulsar+ssl://01c9sdjvgwp27gjhh5qps7y681-apd.au.messaging.cloud.tibco.com:10038",
-"PulsarNameSpace": "01C9SDJVGWP27GJHH5QPS7Y681/channel", 
+"PulsarAuthenticationKey:"xxxxxxxxxx",
+
+"PulsarURL": "pulsar+ssl://xxxxxxxxxxxx.au.messaging.cloud.tibco.com:10038",
+"PulsarNameSpace": "zzzzzzzzzzzzzzzzzz/channel", 
 "PulsarTopic":"topic/subtopic"
-
-	
-
-
-  "MQTTServerURL":"tcp://server.com:1883",
-  "MQTTClientID":"client-string",
-  "MQTTTopic":"topic/subtopic",
-  "MQTTQos":0,
-  "MQTTUsername":"user",
-  "MQTTPassword":"pass",
-
 
 }
