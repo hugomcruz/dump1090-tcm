@@ -1,8 +1,6 @@
 {
-  "MQTTServerURL":"tcp://serber-name.com:1883",
-  "MQTTClientID":"client-string",
-  "MQTTTopic":"topic/subtopic",
-  "MQTTQos":0,
-  "MQTTUsername":"user",
-  "MQTTPassword":"pass"
+  	"PulsarAuthenticationKey": "xxxxx",
+    "PulsarURL": "pulsar+ssl://xxxxxx.au.messaging.cloud.tibco.com:10038",
+	  "PulsarSubscriber": "xxxxxx-dumper-1",
+	  "PulsarTopic": "xxxxxxxxx/channel/frdata",
 }

@@ -6,11 +6,4 @@
 	"PulsarURL": "pulsar+ssl://01c9sdjvgwp27gjhh5qps7y681-apd.au.messaging.cloud.tibco.com:10038",
 	"PulsarSubscriber": "subscriber-flogo-1",
 	"PulsarTopic": "01C9SDJVGWP27GJHH5QPS7Y681/channel/frdata",
-
-  "MQTTServerURL":"tcp://serber-name.com:1883",
-  "MQTTClientID":"client-string",
-  "MQTTTopic":"topic/subtopic",
-  "MQTTQos":0,
-  "MQTTUsername":"user",
-  "MQTTPassword":"pass"
 }

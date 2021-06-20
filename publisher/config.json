@@ -16,10 +16,4 @@
 	"PulsarTopic": "01C9SDJVGWP27GJHH5QPS7Y681/channel/frdata2",
   "PulsarProducerName":"fr-vvts16",
 
-	"MQTTServerURL": "tcp://server.com:1883",
-	"MQTTClientID": "client-string",
-	"MQTTTopic": "topic/subtopic",
-	"MQTTQos": 0,
-	"MQTTUsername": "user",
-	"MQTTPassword": "pass"
 }

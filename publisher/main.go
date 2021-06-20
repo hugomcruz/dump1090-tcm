@@ -17,7 +17,6 @@ import (
 	"time"
 
 	"github.com/apache/pulsar-client-go/pulsar"
-	mqtt "github.com/eclipse/paho.mqtt.golang"
 	log "github.com/sirupsen/logrus"
 	"github.com/tkanos/gonfig"
 )
@@ -59,17 +58,10 @@ type Configuration struct {
 	PulsarNameSpace         string
 	RadarID                 string
 	RadarKey                string
-
-	MQTTServerURL   string
-	MQTTClientID    string
-	MQTTTopic       string
-	MQTTQos         int
-	MQTTUsername    string
-	MQTTPassword    string
-	Dump1090Server  string
-	Dump1090Port    int
-	BatchTimeWindow int
-	LogLevel        string
+	Dump1090Server          string
+	Dump1090Port            int
+	BatchTimeWindow         int
+	LogLevel                string
 }
 
 func main() {
@@ -106,33 +98,17 @@ func main() {
 
 	}
 
-	var client mqtt.Client
 	var clientPulsar pulsar.Client
 	var topic string
 	var pulsarProducer pulsar.Producer
 
-	if configuration.Protocol == "Pulsar" {
+	topic = configuration.PulsarTopic
+	clientPulsar = connectPulsar(configuration)
 
-		topic = configuration.PulsarTopic
-		clientPulsar = connectPulsar(configuration)
-
-		// Error connecting to MQTT
-		if clientPulsar == nil {
-			log.Error("Error during connection to PULSAR. Exiting now...")
-			os.Exit(1)
-		}
-	} else if configuration.Protocol == "MQTT" {
-		clientPulsar = nil
-		topic = configuration.MQTTTopic
-		//Connect to MQTT
-		client := connect(configuration)
-
-		// Error connecting to MQTT
-		if client == nil {
-			log.Error("Error during connection to MQTT. Exiting now...")
-			os.Exit(1)
-		}
-
+	// Error connecting to Pulsar
+	if clientPulsar == nil {
+		log.Error("Error during connection to PULSAR. Exiting now...")
+		os.Exit(1)
 	}
 
 	ip := configuration.Dump1090Server
@@ -144,7 +120,7 @@ func main() {
 	conn, err := net.Dial("tcp", ip+":"+port)
 
 	if err != nil {
-		disconnect(client)
+		disconnectPulsar(clientPulsar) // Disconnect here from Pulsar
 		log.Error("Error connecting to DUMP1090. Exiting now...")
 		os.Exit(1)
 	}
@@ -190,13 +166,8 @@ func main() {
 			// Compress (GZIP) the batched message
 			compressedMessage := compress(tmpMessageBuffer)
 
-			if configuration.Protocol == "Pulsar" {
-				id := sendPulsar(configuration, pulsarProducer, compressedMessage)
-				log.Debug("Message sent: ", id)
-
-			} else if configuration.Protocol == "MQTT" {
-				send(client, topic, compressedMessage)
-			}
+			id := sendPulsar(configuration, pulsarProducer, compressedMessage)
+			log.Debug("Message sent: ", id)
 
 			// Reset variables for next time window batch
 			startTime = time.Now().Unix()

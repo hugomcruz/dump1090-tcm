@@ -24,18 +24,11 @@ import (
 
 //Configuration Data
 type Configuration struct {
-	Protocol                string
+
 	PulsarTopic             string
 	PulsarAuthenticationKey string
 	PulsarURL               string
 	PulsarSubscriber        string
-
-	MQTTServerURL string
-	MQTTClientID  string
-	MQTTTopic     string
-	MQTTQos       int
-	MQTTUsername  string
-	MQTTPassword  string
 }
 
 func onMessageReceived(client MQTT.Client, message MQTT.Message) {
