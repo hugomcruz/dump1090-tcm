@@ -243,12 +243,12 @@ func main() {
 	tm := time.Unix(nextRoll/1000, 0).In(loc)
 	timeNow := time.Now().In(loc)
 	timeNowMillis := timeNow.UnixNano() / 1000000
-	log.Debug("Current time       : ", timeNow)
-	log.Debug("Current timestamp  : ", timeNowMillis)
-	log.Debug("Start Time         : ", startTime)
-	log.Debug("Next roll time     : ", tm)
-	log.Debug("Next Roll timestamp: ", nextRoll)
-	log.Debug("New Filename       : ", filename)
+	log.Info("---Current time       : ", timeNow)
+	log.Info("---Current timestamp  : ", timeNowMillis)
+	log.Info("---Start Time         : ", startTime)
+	log.Info("---Next roll time     : ", tm)
+	log.Info("---Next Roll timestamp: ", nextRoll)
+	log.Info("---New Filename       : ", filename)
 
 	// Receive individual messages here
 	for cm := range channel {
@@ -303,14 +303,14 @@ func main() {
 					tm := time.Unix(nextRoll/1000, 0).In(loc)
 					timeNow := time.Now().In(loc)
 					timeNowMillis := timeNow.UnixNano() / 1000000
-					log.Debug("Current time       : ", timeNow)
-					log.Debug("Current timestamp  : ", timeNowMillis)
-					log.Debug("Start Time         : ", startTime)
-					log.Debug("Next roll time     : ", tm)
-					log.Debug("Next Roll timestamp: ", nextRoll)
-					log.Debug("New Filename       : ", filename)
+					log.Info("Current time       : ", timeNow)
+					log.Info("Current timestamp  : ", timeNowMillis)
+					log.Info("Start Time         : ", startTime)
+					log.Info("Next roll time     : ", tm)
+					log.Info("Next Roll timestamp: ", nextRoll)
+					log.Info("New Filename       : ", filename)
 
-					fullpath := filepath.Join(configuration.FilesPath, filename)
+					fullpath = filepath.Join(configuration.FilesPath, filename)
 					file, err = os.OpenFile(fullpath+".tmp", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 					if err != nil {
 						panic(err)
